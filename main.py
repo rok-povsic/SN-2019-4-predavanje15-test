@@ -8,4 +8,5 @@ def index():
     return render_template("aaa.html")
 
 
-app.run()
+if __name__ == '__main__':
+    app.run()
