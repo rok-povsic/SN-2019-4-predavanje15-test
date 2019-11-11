@@ -3,6 +3,29 @@
         <link rel="stylesheet" href="/static/css/stil.css">
     </head>
     <body>
-        <h1>HEY</h1>
+    {% if name %}
+        <h1>Pozdravljen, {{ name }}</h1>
+
+        <form method="post" action="/objava">
+            <input name="vsebina" placeholder="Vpisi vsebino">
+            <button type="submit">Poslji</button>
+        </form>
+
+        <table>
+        {% for objava in objave %}
+            <tr><td><strong>{{ objava.avtor }}:</strong></td><td>{{ objava.vsebina }}</td></tr>
+        {% endfor %}
+        </table>
+
+    {% else %}
+        <h1>Pozdravljen neznanec</h1>
+
+        <p>Prosim prijavi se</p>
+
+        <form method="post" action="/login">
+            <input name="user-name" placeholder="Tvoje ime">
+            <button type="submit">Prijavi se</button>
+        </form>
+    {% endif %}
     </body>
 </html>
